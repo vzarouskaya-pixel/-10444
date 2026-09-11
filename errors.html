@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Частые ошибки — Мануал асессора</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="logo">📘 Мануал асессора</div>
+        <nav class="main-nav">
+            <a href="index.html">Главная</a>
+            <a href="tz.html">ТЗ</a>
+            <a href="errors.html" class="active">Частые ошибки</a>
+            <a href="tests.html">Тесты</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <h1>Частые ошибки с примерами</h1>
+    <p class="subtitle">Каждый пример содержит: что пошло не так, почему это ошибка и как правильно.</p>
+
+    <!-- ПРИМЕР 1 -->
+    <article class="error-case">
+        <h2>Ошибка №1: Неверный выбор объявления</h2>
+
+        <div class="example-block bad">
+            <div class="example-label">❌ Неправильно</div>
+            <p>Выбрано объявление, которое по контексту не входит в подтверждённую внеавитную покупку, хотя в диалоге встретился отдельный сигнал.</p>
+            <img src="images/error1-bad.png" alt="Пример неправильного выбора" class="example-img">
+        </div>
+
+        <div class="example-block explanation">
+            <div class="example-label">💡 Пояснение</div>
+            <p>Отдельный сигнал в диалоге (например, упоминание товара) — это ещё не основание выбирать объявление. Нужно убедиться, что весь контекст соответствует подтверждённой покупке.</p>
+        </div>
+
+        <div class="example-block good">
+            <div class="example-label">✅ Правильно</div>
+            <p>Объявление не выбрано, так как контекст не относится к подтверждённой внеавитной покупке. Сигнал использован только для понимания контекста.</p>
+            <img src="images/error1-good.png" alt="Пример правильного действия" class="example-img">
+        </div>
+    </article>
+
+    <!-- ПРИМЕР 2 -->
+    <article class="error-case">
+        <h2>Ошибка №2: U2U как объявление</h2>
+
+        <div class="example-block bad">
+            <div class="example-label">❌ Неправильно</div>
+            <p>Асессор выбрал U2U-сообщение как объявление, хотя это коммуникация между пользователями, а не само объявление.</p>
+        </div>
+
+        <div class="example-block explanation">
+            <div class="example-label">💡 Пояснение</div>
+            <p><strong>U2U (User-to-User)</strong> — это взаимодействие между пользователями. Его <strong>можно использовать как контекст</strong>, но <strong>нельзя выбирать как объявление</strong>.</p>
+        </div>
+
+        <div class="example-block good">
+            <div class="example-label">✅ Правильно</div>
+            <p>U2U-сообщение использовано только для понимания контекста. Объявление для выбора берётся из другого источника.</p>
+        </div>
+    </article>
+
+    <!-- ДОБАВЛЯЙТЕ НОВЫЕ ПРИМЕРЫ НИЖЕ ПО ЭТОМУ ЖЕ ШАБЛОНУ -->
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        © 2026 Мануал для асессоров
+    </div>
+</footer>
+
+</body>
+</html>
