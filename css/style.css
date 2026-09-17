@@ -1158,3 +1158,54 @@ html {
     background: #d4edda;
     color: #1b5e20;
 }
+/* ================================================================
+   ВРЕЗКИ СО СКРИНШОТАМИ ИНТЕРФЕЙСА (для tz.html)
+   ================================================================ */
+
+.ui-screenshot {
+    margin: 20px 0;
+    background: #fffdf8;
+    border: 1px solid #ece0cb;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+}
+
+.ui-screenshot a {
+    display: inline-block;
+    border-bottom: none;
+}
+
+.ui-screenshot img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #e2d4b8;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: zoom-in;
+}
+
+.ui-screenshot img:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 20px rgba(74, 50, 32, 0.15);
+}
+
+.ui-screenshot-caption {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #8b6b4a;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* На узких экранах — чуть меньше отступы */
+@media (max-width: 640px) {
+    .ui-screenshot {
+        padding: 10px;
+        margin: 14px 0;
+    }
+    .ui-screenshot-caption {
+        font-size: 13px;
+    }
+}
