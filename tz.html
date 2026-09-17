@@ -30,7 +30,7 @@
 
     <p style="margin-bottom: 24px;">По всем материалам карточки нужно определить, подтвержден ли увод сделки с доставкой за пределы Авито. Сначала прочитайте карточку, затем заполните признаки и определите итог по каждой покупке/сделке.</p>
 
-    <!-- ОГЛАВЛЕНИЕ -->
+    <!-- ОГЛАВЛЕНИЕ (верхнее) -->
     <nav class="toc">
         <h2>Содержание</h2>
         <ol>
@@ -48,6 +48,32 @@
             <li><a href="#sec-4">Когда в карточке чаты по разным объявлениям</a></li>
         </ol>
     </nav>
+
+    <!-- СЕТКА: САЙДБАР СЛЕВА + КОНТЕНТ СПРАВА -->
+    <div class="layout-sidebar-left">
+
+        <!-- ЛЕВЫЙ САЙДБАР С ОГЛАВЛЕНИЕМ -->
+        <aside class="sidebar-left">
+            <div class="sidebar-left-title">Разделы ТЗ</div>
+            <ul class="sidebar-left-nav">
+                <li><a href="#sec-1">1. Как читать карточку</a></li>
+                <li>
+                    <a href="#sec-2">2. Как заполнять поля</a>
+                    <ul class="sidebar-left-nav" style="margin: 2px 0 4px 0;">
+                        <li><a href="#sec-2-1" class="sub">2.1. Организация</a></li>
+                        <li><a href="#sec-2-2" class="sub">2.2. Реализация</a></li>
+                        <li><a href="#sec-2-3" class="sub">2.3. Корнеры</a></li>
+                        <li><a href="#sec-2-4" class="sub">2.4. Готовность продавца</a></li>
+                        <li><a href="#sec-2-5" class="sub">2.5. Итоговое решение</a></li>
+                    </ul>
+                </li>
+                <li><a href="#sec-3">3. Справочник корнеров</a></li>
+                <li><a href="#sec-4">4. Несколько объявлений</a></li>
+            </ul>
+        </aside>
+
+        <!-- ОСНОВНОЙ КОНТЕНТ -->
+        <div class="layout-main">
 
     <!-- ============ РАЗДЕЛ 1 ============ -->
     <details class="accordion" id="sec-1" open>
@@ -374,6 +400,10 @@
         <p><strong>📚 Все примеры и контрпримеры разметки</strong> вынесены на отдельную страницу — так удобнее искать и повторять.</p>
         <p><a href="examples.html">→ Открыть примеры и контрпримеры</a></p>
     </div>
+
+        </div><!-- /layout-main -->
+
+    </div><!-- /layout-sidebar-left -->
 
 </main>
 
