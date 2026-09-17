@@ -1209,3 +1209,104 @@ html {
         font-size: 13px;
     }
 }
+/* ================================================================
+   ЛЕВЫЙ САЙДБАР С ОГЛАВЛЕНИЕМ (для tz.html)
+   ================================================================ */
+
+/* Общий контейнер: 2 колонки — сайдбар слева, контент справа */
+.layout-sidebar-left {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+@media (min-width: 1100px) {
+    .layout-sidebar-left {
+        grid-template-columns: 240px minmax(0, 1fr);
+        gap: 40px;
+    }
+}
+
+/* Сайдбар скрыт на узких экранах */
+.sidebar-left {
+    display: none;
+}
+
+@media (min-width: 1100px) {
+    .sidebar-left {
+        display: block;
+        position: sticky;
+        top: 96px;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+        font-size: 14px;
+        padding-right: 8px;
+    }
+}
+
+/* Заголовок сайдбара */
+.sidebar-left-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a08a70;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e2d4b8;
+}
+
+/* Список пунктов */
+.sidebar-left-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-left-nav li {
+    margin: 0;
+}
+
+.sidebar-left-nav a {
+    display: block;
+    padding: 6px 10px 6px 12px;
+    color: #6b5440;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    border-radius: 4px;
+    font-size: 13.5px;
+    line-height: 1.4;
+    transition: all 0.15s;
+}
+
+.sidebar-left-nav a:hover {
+    color: #6b3f1d;
+    background: #fbf3e3;
+    border-left-color: #b98a5a;
+}
+
+/* Вложенные пункты (2.1, 2.2 и т.д.) */
+.sidebar-left-nav .sub {
+    padding-left: 24px;
+    font-size: 13px;
+    color: #8b6b4a;
+}
+
+.sidebar-left-nav .sub:hover {
+    color: #6b3f1d;
+}
+
+/* Тонкий скроллбар сайдбара */
+.sidebar-left::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-left::-webkit-scrollbar-thumb {
+    background: #e2d4b8;
+    border-radius: 3px;
+}
+
+.sidebar-left::-webkit-scrollbar-track {
+    background: transparent;
+}
