@@ -14,6 +14,7 @@
         <nav class="main-nav">
             <a href="index.html">Главная</a>
             <a href="tz.html">ТЗ</a>
+            <a href="examples.html">Примеры</a>
             <a href="errors.html">Частые ошибки</a>
             <a href="tests.html" class="active">Тесты</a>
         </nav>
@@ -25,14 +26,186 @@
     <a href="index.html" class="back-link">← Назад на главную</a>
 
     <h1>🔺 Тренировочные тесты</h1>
-    <p class="subtitle">Проверьте свои знания перед реальной работой.</p>
+    <p class="subtitle">10 вопросов по регламенту. Отвечайте по порядку — итоговый разбор появится автоматически.</p>
 
-    <div class="quiz">
-        <h3>Вопрос 1. Что такое U2U?</h3>
-        <button class="quiz-option" onclick="checkAnswer(this, false)">A. Тип объявления</button>
-        <button class="quiz-option" onclick="checkAnswer(this, true)">B. Взаимодействие пользователь-пользователь</button>
-        <button class="quiz-option" onclick="checkAnswer(this, false)">C. Раздел ТЗ</button>
+    <!-- СЧЁТЧИК ПРОГРЕССА -->
+    <div class="quiz-progress" id="quiz-progress">
+        <div class="quiz-progress-text">
+            Правильно: <strong id="quiz-counter">0</strong> из 10
+            <span style="font-size: 13px; color: #8b6b4a; margin-left: 12px;">
+                (отвечено: <span id="quiz-answered">0</span>)
+            </span>
+        </div>
+        <button class="quiz-progress-reset" id="quiz-reset" type="button">↻ Сбросить</button>
     </div>
+
+    <!-- ============ ВОПРОС 1 ============ -->
+    <div class="quiz">
+        <h3>Вопрос 1. Организация + реализация без отправки</h3>
+        <p style="margin-bottom: 12px; color: #6b5440;">
+            Покупатель пишет: «Давайте СДЭКом, переводом на карту». Продавец: «Хорошо, номер карты [номер]».
+            Позже покупатель: «Оплатил». Продавец: «Деньги пришли». Больше ничего не обсуждали.
+            Какой итог по <strong>ПОДТВЕРЖДЕННЫЙ АБЬЮЗ</strong>?
+        </p>
+        <button class="quiz-option" data-correct="true">Да</button>
+        <button class="quiz-option" data-correct="false">Нет</button>
+        <div class="quiz-review-note" style="display: none;">
+            Для абьюза достаточно хотя бы одного признака организации (РЕКВИЗИТЫ_ВНЕ_АВИТО = Да) и хотя бы одного признака реализации (ОПЛАТА_ВНЕ_АВИТО = Да). Отправку ждать не обязательно — оплата уже подтверждает реализацию. Применимых реализованных корнеров нет → абьюз подтверждён.
+        </div>
+    </div>
+
+    <!-- ============ ВОПРОС 2 ============ -->
+    <div class="quiz">
+        <h3>Вопрос 2. Плашка КГТ против обсуждения</h3>
+        <p style="margin-bottom: 12px; color: #6b5440;">
+            Плашка КГТ у объявления = <strong>Нет</strong>. В переписке продавец прямо говорит:
+            «Это крупногабаритный шкаф, в Авито Доставку не пройдёт». Оплата и передача вне Авито не подтверждены.
+            Какие корнеры выбираем?
+        </p>
+        <button class="quiz-option" data-correct="false">A. Никакие — плашка отрицательная</button>
+        <button class="quiz-option" data-correct="true">B. CC05 в «Упомянутых корнерах»</button>
+        <button class="quiz-option" data-correct="false">C. CC05 в «Упомянутых» и «Реализованных»</button>
+        <button class="quiz-option" data-correct="false">D. CC01 в «Упомянутых»</button>
+        <div class="quiz-review-note" style="display: none;">
+            Для CC05 достаточно любого источника: либо плашка «Да», либо содержательное обсуждение крупногабаритности. Отрицательная плашка сигнал не отменяет. В «Упомянутых корнерах» → CC05. В «Реализованных» — пусто, потому что оплата и физическая передача не подтверждены.
+        </div>
+    </div>
+
+    <!-- ============ ВОПРОС 3 ============ -->
+    <div class="quiz">
+        <h3>Вопрос 3. Трек-номер — это отправка?</h3>
+        <p style="margin-bottom: 12px; color: #6b5440;">
+            Продавец прислал трек-номер и написал: «Завтра отвезу в ПВЗ, скину фото».
+            Больше про отправку в карточке ничего нет.
+            Какую резолюцию ставим по полю <strong>ОТПРАВКА_ВНЕ_АВИТО</strong>?
+        </p>
+        <button class="quiz-option" data-correct="false">A. Да — трек-номер получен</button>
+        <button class="quiz-option" data-correct="true">B. Нет</button>
+        <button class="quiz-option" data-correct="false">C. Да, если ПВЗ подключён к Авито</button>
+        <button class="quiz-option" data-correct="false">D. Нет, но это ОПЛАТА_ВНЕ_АВИТО</button>
+        <div class="quiz-review-note" style="display: none;">
+            Трек-номер и обещание отправить не подтверждают физическую передачу. Нужно ясное сообщение о состоявшейся передаче, приёме перевозчиком или получении покупателем.
+        </div>
+    </div>
+
+    <!-- ============ ВОПРОС 4 ============ -->
+    <div class="quiz">
+        <h3>Вопрос 4. Оплата и корнеры</h3>
+        <p style="margin-bottom: 12px; color: #6b5440;">
+            Покупатель пишет: «Оплатил 5000 на номер, который вы дали». Продавец отвечает: «Деньги пришли, спасибо».
+            В карточке других сигналов нет. Какую резолюцию ставим по <strong>ОПЛАТА_ВНЕ_АВИТО</strong> и какие корнеры выбираем?
+        </p>
+        <button class="quiz-option" data-correct="false">A. ОПЛАТА = Нет, корнер — CC14</button>
+        <button class="quiz-option" data-correct="true">B. ОПЛАТА = Да, корнеры пусты</button>
+        <button class="quiz-option" data-correct="false">C. ОПЛАТА = Да, корнер — CC01</button>
+        <button class="quiz-option" data-correct="false">D. ОПЛАТА = Нет, корнеры пусты</button>
+        <div class="quiz-review-note" style="display: none;">
+            Покупатель подтвердил перевод + продавец подтвердил поступление = факт оплаты. Но сама оплата не создаёт корнер — только если в чате был сигнал (КГТ, обмен, самовывоз и т.д.).
+        </div>
+    </div>
+
+    <!-- ============ ВОПРОС 5 ============ -->
+    <div class="quiz">
+        <h3>Вопрос 5. Ozon — какой признак?</h3>
+        <p style="margin-bottom: 12px; color: #6b5440;">
+            Покупатель: «Отправьте, пожалуйста, через Ozon». Продавец: «Хорошо, пришлите адрес и телефон».
+            Позже покупатель пишет: «Оплатил, отправляйте». Продавец: «Завтра отправлю».
+            Какие признаки ставим?
+        </p>
+        <button class="quiz-option" data-correct="false">A. ДОСТАВКА_НАПРЯМУЮ = Да, ОПЛАТА = Да</button>
+        <button class="quiz-option" data-correct="true">B. ДОСТАВКА_ВНЕШНЯЯ = Да, ДОСТАВКА_НАПРЯМУЮ = Нет, ОПЛАТА = Нет</button>
+        <button class="quiz-option" data-correct="false">C. ДОСТАВКА_ВНЕШНЯЯ = Да, ОПЛАТА = Да</button>
+        <button class="quiz-option" data-correct="false">D. Все три = Нет</button>
+        <div class="quiz-review-note" style="display: none;">
+            Ozon — внешняя служба (не подключена к Авито Доставке) → ДОСТАВКА_ВНЕШНЯЯ = Да. Оплата только обещана → ОПЛАТА_ВНЕ_АВИТО = Нет.
+        </div>
+    </div>
+    <!-- ============ ВОПРОС 6 ============ -->
+    <div class="quiz">
+        <h3>Вопрос 6. Готовность продавца без сделки</h3>
+        <p style="margin-bottom: 12px; color: #6b5440;">
+            Продавец пишет: «Могу отправить ПЭК после полной оплаты». Покупатель отвечает: «Спасибо, я подумаю».
+            Больше сообщений нет. Какую резолюцию ставим по <strong>ГОТОВНОСТЬ_ПРОДАВЦА_ОТПРАВИТЬ_ВНЕ_АВИТО</strong>?
+        </p>
+        <button class="quiz-option" data-correct="false">A. Нет — покупатель не согласился</button>
+        <button class="quiz-option" data-correct="true">B. Да</button>
+        <button class="quiz-option" data-correct="false">C. Да, но только вместе с ДОСТАВКА_НАПРЯМУЮ</button>
+        <button class="quiz-option" data-correct="false">D. Нет — сделка не состоялась</button>
+        <div class="quiz-review-note" style="display: none;">
+            Продавец явно предложил отправку вне Авито. Окончательная договорённость и сделка не требуются для этого поля. При этом ДОСТАВКА_ВНЕШНЯЯ и ДОСТАВКА_НАПРЯМУЮ останутся «Нет» — договорённости-то нет.
+        </div>
+    </div>
+
+    <!-- ============ ВОПРОС 7 ============ -->
+    <div class="quiz">
+        <h3>Вопрос 7. Абьюз по одной покупке, корнер по другой</h3>
+        <p style="margin-bottom: 12px; color: #6b5440;">
+            В карточке две независимые покупки. По <strong>D01</strong> подтверждены ДОСТАВКА_ВНЕШНЯЯ и ОПЛАТА_ВНЕ_АВИТО, реализованных корнеров нет.
+            По <strong>D02</strong> другой товар, покупатель сам забрал его самовывозом.
+            Какой итог по <strong>ПОДТВЕРЖДЕННЫЙ_АБЬЮЗ</strong> и какие объявления выбираем?
+        </p>
+        <button class="quiz-option" data-correct="false">A. Нет; объявления — пусто</button>
+        <button class="quiz-option" data-correct="false">B. Нет; выбрать D02</button>
+        <button class="quiz-option" data-correct="true">C. Да; выбрать D01</button>
+        <button class="quiz-option" data-correct="false">D. Да; выбрать D01 и D02</button>
+        <div class="quiz-review-note" style="display: none;">
+            Абьюз подтверждён хотя бы по одной покупке — уже достаточно для «Да». CC03 (самовывоз) по D02 сохраняем в списках корнеров, но это не отменяет абьюз по D01.
+        </div>
+    </div>
+
+    <!-- ============ ВОПРОС 8 ============ -->
+    <div class="quiz">
+        <h3>Вопрос 8. Возврат после увода</h3>
+        <p style="margin-bottom: 12px; color: #6b5440;">
+            Продавец передал реквизиты, покупатель перевёл, продавец подтвердил отправку.
+            Позже покупатель пишет: «Возвращаю товар, верните деньги». Продавец переводит обратно.
+            Какую резолюцию ставим по <strong>ПОДТВЕРЖДЕННЫЙ_АБЬЮЗ</strong>?
+        </p>
+        <button class="quiz-option" data-correct="false">A. Нет — товар вернулся к продавцу</button>
+        <button class="quiz-option" data-correct="true">B. Да</button>
+        <button class="quiz-option" data-correct="false">C. Нет — сделка аннулирована возвратом</button>
+        <button class="quiz-option" data-correct="false">D. Зависит от суммы возврата</button>
+        <div class="quiz-review-note" style="display: none;">
+            Увод уже был подтверждён до возврата. Последующий возврат товара и денег не отменяет первоначальный увод.
+        </div>
+    </div>
+
+    <!-- ============ ВОПРОС 9 ============ -->
+    <div class="quiz">
+        <h3>Вопрос 9. Только возврат, без покупки</h3>
+        <p style="margin-bottom: 12px; color: #6b5440;">
+            В карточке единственное: покупатель пишет «Товар уже получил, хочу вернуть», продавец просит реквизиты для возврата.
+            Других сведений о первоначальной покупке нет.
+            Какую резолюцию ставим по <strong>ПОДТВЕРЖДЕННЫЙ_АБЬЮЗ</strong>?
+        </p>
+        <button class="quiz-option" data-correct="true">A. Нет</button>
+        <button class="quiz-option" data-correct="false">B. Да — реквизиты переданы</button>
+        <button class="quiz-option" data-correct="false">C. Да — есть оплата вне Авито</button>
+        <button class="quiz-option" data-correct="false">D. Зависит от суммы</button>
+        <div class="quiz-review-note" style="display: none;">
+            Реквизиты и перевод только для возврата не подтверждают увод первоначальной покупки. Нет ни организации, ни реализации сделки вне Авито.
+        </div>
+    </div>
+
+    <!-- ============ ВОПРОС 10 ============ -->
+    <div class="quiz">
+        <h3>Вопрос 10. Несколько объявлений — один заказ</h3>
+        <p style="margin-bottom: 12px; color: #6b5440;">
+            D01 — платье, покупатель пишет «Вот эту хочу заказать». D02 — туфли, покупатель пишет «И вот эти добавьте в заказ».
+            В U2U-чате (D03) стороны договариваются отправить оба товара через внешний ПВЗ, покупатель переводит деньги за оба, продавец подтверждает.
+            Какие объявления выбираем и какой итог по <strong>ПОДТВЕРЖДЕННЫЙ_АБЬЮЗ</strong>?
+        </p>
+        <button class="quiz-option" data-correct="false">A. D01; абьюз = Нет</button>
+        <button class="quiz-option" data-correct="true">B. D01 и D02; абьюз = Да</button>
+        <button class="quiz-option" data-correct="false">C. D01, D02 и D03; абьюз = Да</button>
+        <button class="quiz-option" data-correct="false">D. Только D03; абьюз = Да</button>
+        <div class="quiz-review-note" style="display: none;">
+            По контексту это один общий заказ из двух товаров. Договорённость и оплата относятся к обоим → абьюз подтверждён по обоим. D03 (U2U) — только контекст, не выбирается.
+        </div>
+    </div>
+
+    <!-- РАЗБОР ОТВЕТОВ (появится автоматически) -->
+    <div id="quiz-review"></div>
 
 </main>
 
