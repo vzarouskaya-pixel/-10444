@@ -900,3 +900,117 @@ main h1 {
     border-radius: 4px;
     white-space: nowrap;
 }
+/* ================================================================
+   ПРАВЫЙ САЙДБАР С ОГЛАВЛЕНИЕМ (для examples.html)
+   ================================================================ */
+
+/* Общий контейнер: сетка из двух колонок */
+.layout-with-sidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+/* На широких экранах — две колонки */
+@media (min-width: 1100px) {
+    .layout-with-sidebar {
+        grid-template-columns: minmax(0, 1fr) 240px;
+        gap: 40px;
+    }
+}
+
+/* Сам сайдбар */
+.page-sidebar {
+    display: none;
+}
+
+@media (min-width: 1100px) {
+    .page-sidebar {
+        display: block;
+        position: sticky;
+        top: 96px; /* отступ от липкой шапки */
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+        font-size: 14px;
+        padding-right: 8px;
+    }
+}
+
+/* Заголовок сайдбара */
+.sidebar-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a08a70;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e2d4b8;
+}
+
+/* Список пунктов */
+.sidebar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-nav li {
+    margin: 0;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 6px 10px 6px 12px;
+    color: #6b5440;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    border-radius: 4px;
+    font-size: 13.5px;
+    line-height: 1.4;
+    transition: all 0.15s;
+}
+
+.sidebar-nav a:hover {
+    color: #6b3f1d;
+    background: #fbf3e3;
+    border-left-color: #b98a5a;
+}
+
+/* Вложенные пункты (5.1, 5.2 и т.д.) */
+.sidebar-nav .sub {
+    padding-left: 22px;
+    font-size: 13px;
+    color: #8b6b4a;
+}
+
+.sidebar-nav .sub:hover {
+    color: #6b3f1d;
+}
+
+/* Активный пункт (можно подсветить через JS, но пока без него) */
+.sidebar-nav a:target {
+    color: #6b3f1d;
+    font-weight: 700;
+}
+
+/* Тонкий скроллбар сайдбара */
+.page-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.page-sidebar::-webkit-scrollbar-thumb {
+    background: #e2d4b8;
+    border-radius: 3px;
+}
+
+.page-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Плавный скролл по якорям (для всего сайта) */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
