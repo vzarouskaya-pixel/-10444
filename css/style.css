@@ -1310,3 +1310,12 @@ html {
 .sidebar-left::-webkit-scrollbar-track {
     background: transparent;
 }
+/* ================================================================
+   РАСШИРЕНИЕ КОНТЕЙНЕРА НА СТРАНИЦАХ С САЙДБАРОМ
+   ================================================================ */
+@media (min-width: 1100px) {
+    main.container:has(.layout-sidebar-left),
+    main.container:has(.layout-with-sidebar) {
+        max-width: 1300px;
+    }
+}
