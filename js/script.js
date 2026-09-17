@@ -23,8 +23,9 @@ function checkAnswer(button, isCorrect) {
 /* ================================================================
    ПОИСК ПО САЙТУ
    ================================================================
-   Живой фильтр по ключевым словам. Работает без сервера, прямо
-   в браузере. Пополняется по мере роста мануала.
+   Живой фильтр по ключевым словам. Работает без сервера.
+   Поддерживает поиск технических терминов и латиницей, и кириллицей
+   (CC08 = СС08, U2U = U2U, DPD = ДПД).
    ================================================================ */
 
 const searchIndex = [
@@ -87,13 +88,50 @@ const searchIndex = [
     { title: "Тренировочные тесты", page: "tests.html", anchor: "", keywords: "тест тесты проверка знаний U2U" }
 ];
 
+/* ---------- Нормализация латиницы ↔ кириллицы ----------
+   Позволяет искать CC08 и СС08 (кириллицей), DPD и ДПД,
+   U2U и U2U (в обоих алфавитах) и т.д.
+   Применяется ТОЛЬКО к коротким строкам, чтобы не портить
+   обычные русские слова (например, «срок»).
+---------------------------------------------------------- */
+const CYR_TO_LAT_MAP = {
+    'с': 'c', 'а': 'a', 'е': 'e', 'о': 'o', 'р': 'p',
+    'х': 'x', 'у': 'y', 'к': 'k', 'в': 'b', 'н': 'h',
+    'м': 'm', 'т': 't'
+};
+
+function normalizeShort(str) {
+    return str.replace(/[саеорхуквнмт]/g, ch => CYR_TO_LAT_MAP[ch] || ch);
+}
+
+/* Приводит строку к виду, пригодному для сравнения:
+   - нижний регистр
+   - убирает лишние пробелы
+   - для коротких строк (≤ 6 символов) нормализует кириллицу */
+function makeSearchString(str) {
+    const cleaned = str.toLowerCase().trim().replace(/\s+/g, ' ');
+    if (cleaned.length <= 6) {
+        return normalizeShort(cleaned);
+    }
+    return cleaned;
+}
+
 function initSearch() {
     const input = document.getElementById('site-search');
     const results = document.getElementById('search-results');
     if (!input || !results) return;
 
+    // Заранее готовим нормализованные ключи для всех элементов индекса
+    const preparedIndex = searchIndex.map(item => ({
+        ...item,
+        _titleNorm: makeSearchString(item.title),
+        _keywordsNorm: makeSearchString(item.keywords)
+    }));
+
     input.addEventListener('input', () => {
-        const q = input.value.trim().toLowerCase();
+        const raw = input.value.trim();
+        const q = makeSearchString(raw);
+
         results.innerHTML = '';
 
         if (q.length < 2) {
@@ -101,10 +139,9 @@ function initSearch() {
             return;
         }
 
-        const found = searchIndex.filter(item => {
-            const haystack = (item.title + ' ' + item.keywords).toLowerCase();
-            return haystack.includes(q);
-        }).slice(0, 10);
+        const found = preparedIndex.filter(item =>
+            item._titleNorm.includes(q) || item._keywordsNorm.includes(q)
+        ).slice(0, 10);
 
         if (found.length === 0) {
             results.classList.add('visible');
