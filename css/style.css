@@ -7,15 +7,42 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6;
+    line-height: 1.65;
     color: #2c3e50;
     background-color: #f5f7fa;
+    font-size: 16px;
 }
 
 .container {
     max-width: 960px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+/* Ссылки внутри текста */
+main a:not(.card):not(.toc a) {
+    color: #1a73e8;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(26, 115, 232, 0.35);
+    transition: all 0.15s;
+}
+
+main a:not(.card):not(.toc a):hover {
+    border-bottom-color: #1a73e8;
+    background: rgba(26, 115, 232, 0.06);
+}
+
+/* Списки */
+main ul, main ol {
+    margin: 12px 0 16px 24px;
+}
+
+main li {
+    margin-bottom: 6px;
+}
+
+main li::marker {
+    color: #1a73e8;
 }
 
 /* ============ ШАПКА И НАВИГАЦИЯ ============ */
@@ -38,6 +65,12 @@ body {
     font-size: 18px;
     font-weight: 700;
     color: #1a73e8;
+    text-decoration: none;
+    transition: opacity 0.15s;
+}
+
+.logo:hover {
+    opacity: 0.75;
 }
 
 .main-nav {
@@ -119,17 +152,65 @@ body {
     color: #666;
 }
 
+/* ============ КНОПКА «НАЗАД» ============ */
+.back-link {
+    display: inline-block;
+    margin: 24px 0 4px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.15s;
+}
+
+.back-link:hover {
+    color: #1a73e8;
+}
+
 /* ============ ЗАГОЛОВКИ СТРАНИЦ ============ */
 main h1 {
     font-size: 28px;
     color: #1a2b4c;
-    margin: 32px 0 8px;
+    margin: 8px 0 8px;
 }
 
 .subtitle {
     color: #666;
     margin-bottom: 32px;
     font-size: 16px;
+}
+
+/* ============ ОГЛАВЛЕНИЕ (TOC) ============ */
+.toc {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid #1a73e8;
+}
+
+.toc h2 {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #1a73e8;
+    margin-bottom: 12px;
+}
+
+.toc ol {
+    margin: 0 0 0 20px;
+}
+
+.toc a {
+    color: #2c3e50;
+    text-decoration: none;
+    border-bottom: 1px dashed transparent;
+    transition: all 0.15s;
+}
+
+.toc a:hover {
+    color: #1a73e8;
+    border-bottom-color: #1a73e8;
 }
 
 /* ============ ПРИМЕРЫ ОШИБОК ============ */
@@ -139,6 +220,7 @@ main h1 {
     padding: 24px;
     margin-bottom: 32px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    scroll-margin-top: 80px; /* чтобы якорь не прилипал к шапке */
 }
 
 .error-case h2 {
@@ -249,12 +331,25 @@ main h1 {
     padding: 24px;
     margin-bottom: 20px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    scroll-margin-top: 80px;
 }
 
 .tz-section h2 {
     color: #1a73e8;
     margin-bottom: 12px;
     font-size: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f0f3f8;
+}
+
+.tz-section h3 {
+    color: #1a2b4c;
+    margin: 20px 0 10px;
+    font-size: 17px;
+}
+
+.tz-section p {
+    margin-bottom: 10px;
 }
 
 /* ============ ПОДВАЛ ============ */
@@ -275,8 +370,12 @@ main h1 {
     }
     .main-nav {
         gap: 16px;
+        justify-content: center;
     }
     .hero h1 {
+        font-size: 24px;
+    }
+    main h1 {
         font-size: 24px;
     }
 }
