@@ -161,6 +161,18 @@ main li::marker {
     color: #6b5440;
 }
 
+@media (min-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1100px) {
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 /* ============ КНОПКА «НАЗАД» ============ */
 .back-link {
     display: inline-block;
@@ -402,10 +414,8 @@ main h1 {
 }
 
 /* ================================================================
-   НОВОЕ: БЛОКИ ДЛЯ ТЗ (аккордеон, бейджи полей, таблицы)
+   АККОРДЕОН
    ================================================================ */
-
-/* ---------- Аккордеон (сворачиваемые секции) ---------- */
 .accordion {
     background: #fffaf0;
     border-radius: 12px;
@@ -462,7 +472,7 @@ main h1 {
     margin-bottom: 0;
 }
 
-/* ---------- Бейдж поля ---------- */
+/* ============ БЕЙДЖИ ПОЛЕЙ ============ */
 .field-card {
     background: #fffdf8;
     border-radius: 10px;
@@ -484,17 +494,14 @@ main h1 {
     color: #4a3220;
 }
 
-/* Оранжевый — организация */
 .field-badge.org {
     background: #f7dcc0;
 }
 
-/* Фиолетовый — реализация */
 .field-badge.impl {
     background: #e3d4ec;
 }
 
-/* Кремовый — остальные поля */
 .field-badge.other {
     background: #f3e9c9;
 }
@@ -524,7 +531,7 @@ main h1 {
     color: #4a2c14;
 }
 
-/* ---------- Таблица шагов 1–4 ---------- */
+/* ============ ТАБЛИЦЫ ============ */
 .steps-table {
     width: 100%;
     border-collapse: collapse;
@@ -564,7 +571,6 @@ main h1 {
     width: 60px;
 }
 
-/* ---------- Таблица корнеров CC ---------- */
 .cc-table {
     width: 100%;
     border-collapse: collapse;
@@ -604,7 +610,7 @@ main h1 {
     width: 70px;
 }
 
-/* ---------- Цитата-формула ---------- */
+/* ============ ФОРМУЛА ============ */
 .formula {
     background: #f3e9c9;
     border-left: 4px solid #b98a5a;
@@ -617,7 +623,7 @@ main h1 {
     font-size: 15px;
 }
 
-/* ---------- Подзаголовок секции внутри аккордеона ---------- */
+/* ============ ПОДЗАГОЛОВОК ВНУТРИ СЕКЦИИ ============ */
 .subsection-title {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 18px;
@@ -630,6 +636,94 @@ main h1 {
 .accordion-body > .subsection-title:first-child {
     margin-top: 0;
 }
+
+/* ================================================================
+   ПРИМЕРЫ В ТЗ (раздел 5)
+   ================================================================ */
+.example-case {
+    background: #fffdf8;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin: 16px 0;
+    border: 1px solid #ece0cb;
+}
+
+.example-case.control {
+    background: #fcf4ee;
+    border-color: #f0d9c8;
+}
+
+.example-case h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 17px;
+    color: #6b3f1d;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.case-tag {
+    display: inline-block;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 5px;
+    color: #4a3220;
+}
+
+.case-tag.example {
+    background: #e6efe2;
+    color: #3d6630;
+}
+
+.case-tag.control {
+    background: #fbe7e4;
+    color: #a5321f;
+}
+
+.chat-quote {
+    background: #f6efe2;
+    border-left: 3px solid #c9b28e;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 10px 0 14px;
+    font-size: 15px;
+    color: #4a3220;
+}
+
+.chat-quote p {
+    margin: 0 0 6px;
+}
+
+.chat-quote p:last-child {
+    margin-bottom: 0;
+}
+
+.chat-quote .who {
+    font-weight: 700;
+    color: #6b3f1d;
+}
+
+.how-to {
+    background: #fbf3d9;
+    border-left: 3px solid #d39e2c;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.how-to::before {
+    content: "Как размечать: ";
+    font-weight: 700;
+    color: #9c6f10;
+}
+
 /* ================================================================
    ПОИСК ПО САЙТУ
    ================================================================ */
@@ -721,10 +815,8 @@ main h1 {
 }
 
 /* ================================================================
-   ДОПОЛНЕНИЯ ДЛЯ СТРАНИЦЫ ПРИМЕРОВ (examples.html)
+   ДОПОЛНЕНИЯ ДЛЯ ПРИМЕРОВ (examples.html)
    ================================================================ */
-
-/* Подзаголовок внутри раздела примеров (напр. ДОСТАВКА_ВНЕШНЯЯ) */
 .example-subhead {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 17px;
@@ -738,7 +830,6 @@ main h1 {
     margin-top: 0;
 }
 
-/* Блок-заметка со ссылкой (используется в конце tz.html) */
 .note-box {
     background: #fbf3d9;
     border-left: 4px solid #d39e2c;
@@ -769,34 +860,8 @@ main h1 {
 }
 
 /* ================================================================
-   ОБНОВЛЕНИЕ СЕТКИ КАРТОЧЕК НА ГЛАВНОЙ
-   ================================================================
-   При 4 карточках минимальная ширина 240px даёт 2 в ряд на десктопе,
-   иногда 4 — смотря по ширине. Немного уменьшим минимум, чтобы
-   уместить 4 в ряд на широких экранах.
-*/
-@media (min-width: 900px) {
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1100px) {
-    .cards {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-/* ================================================================
    ТОЧЕЧНЫЕ АКЦЕНТЫ В ТЗ
-   ================================================================
-   Цветовая логика:
-   - hl-warning  → красный, категорические правила и запреты
-   - hl-attention → оранжевый, условия, которые легко упустить
-   - hl-note     → кремовая заливка, пояснения-подсказки
-   - hl-yes      → зелёный, итог «Да»
-   - hl-no       → красный, итог «Нет»
    ================================================================ */
-
 .hl-warning {
     color: #b3261e;
     font-weight: 700;
@@ -815,12 +880,23 @@ main h1 {
     color: #6b3f1d;
 }
 
+/* Итоговые плашки в примерах — Вариант 2 (пастель) */
 .hl-yes {
-    color: #2e6b1f;
+    display: inline-block;
+    background: #d4edda;
+    color: #1b5e20;
     font-weight: 700;
+    padding: 1px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
 }
 
 .hl-no {
-    color: #b3261e;
+    display: inline-block;
+    background: #f8d7da;
+    color: #b71c1c;
     font-weight: 700;
+    padding: 1px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
 }
