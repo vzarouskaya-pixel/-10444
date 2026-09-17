@@ -1,3 +1,6 @@
+/* ============ ПОДКЛЮЧЕНИЕ ШРИФТОВ ============ */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Playfair+Display:wght@500;700&display=swap');
+
 /* ============ БАЗОВЫЕ СТИЛИ ============ */
 * {
     box-sizing: border-box;
@@ -6,10 +9,10 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.65;
-    color: #2c3e50;
-    background-color: #f5f7fa;
+    font-family: 'Lora', Georgia, "Times New Roman", serif;
+    line-height: 1.7;
+    color: #4a3220;              /* тёмно-коричневый основной текст */
+    background-color: #f6efe2;   /* тёплый бежевый фон */
     font-size: 16px;
 }
 
@@ -21,15 +24,15 @@ body {
 
 /* Ссылки внутри текста */
 main a:not(.card):not(.toc a) {
-    color: #1a73e8;
+    color: #8b5a2b;
     text-decoration: none;
-    border-bottom: 1px solid rgba(26, 115, 232, 0.35);
+    border-bottom: 1px solid rgba(139, 90, 43, 0.4);
     transition: all 0.15s;
 }
 
 main a:not(.card):not(.toc a):hover {
-    border-bottom-color: #1a73e8;
-    background: rgba(26, 115, 232, 0.06);
+    border-bottom-color: #8b5a2b;
+    background: rgba(139, 90, 43, 0.08);
 }
 
 /* Списки */
@@ -42,13 +45,13 @@ main li {
 }
 
 main li::marker {
-    color: #1a73e8;
+    color: #8b5a2b;
 }
 
 /* ============ ШАПКА И НАВИГАЦИЯ ============ */
 .site-header {
-    background-color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    background-color: #fffaf0;   /* почти белый, тёплый */
+    box-shadow: 0 2px 8px rgba(74, 50, 32, 0.08);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -62,10 +65,12 @@ main li::marker {
 }
 
 .logo {
-    font-size: 18px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px;
     font-weight: 700;
-    color: #1a73e8;
+    color: #6b3f1d;              /* тёмно-коричневый, чуть насыщеннее текста */
     text-decoration: none;
+    letter-spacing: 0.02em;
     transition: opacity 0.15s;
 }
 
@@ -80,8 +85,9 @@ main li::marker {
 }
 
 .main-nav a {
+    font-family: 'Lora', Georgia, serif;
     text-decoration: none;
-    color: #555;
+    color: #6b5440;
     font-weight: 500;
     padding: 6px 0;
     border-bottom: 2px solid transparent;
@@ -89,12 +95,12 @@ main li::marker {
 }
 
 .main-nav a:hover {
-    color: #1a73e8;
+    color: #8b5a2b;
 }
 
 .main-nav a.active {
-    color: #1a73e8;
-    border-bottom-color: #1a73e8;
+    color: #6b3f1d;
+    border-bottom-color: #8b5a2b;
 }
 
 /* ============ ГЛАВНАЯ ============ */
@@ -104,14 +110,17 @@ main li::marker {
 }
 
 .hero h1 {
-    font-size: 32px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 36px;
+    font-weight: 700;
     margin-bottom: 16px;
-    color: #1a2b4c;
+    color: #4a2c14;
+    letter-spacing: 0.01em;
 }
 
 .hero p {
     font-size: 17px;
-    color: #666;
+    color: #6b5440;
     max-width: 640px;
     margin: 0 auto;
 }
@@ -125,75 +134,82 @@ main li::marker {
 }
 
 .card {
-    background: #ffffff;
+    background: #fffaf0;
     border-radius: 12px;
     padding: 24px;
     text-decoration: none;
-    color: #2c3e50;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    color: #4a3220;
+    box-shadow: 0 2px 12px rgba(74, 50, 32, 0.08);
     transition: all 0.2s;
     border: 2px solid transparent;
 }
 
 .card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    border-color: #1a73e8;
+    box-shadow: 0 6px 20px rgba(74, 50, 32, 0.14);
+    border-color: #b98a5a;
 }
 
 .card h3 {
+    font-family: 'Playfair Display', Georgia, serif;
     margin-bottom: 8px;
-    color: #1a73e8;
-    font-size: 18px;
+    color: #6b3f1d;
+    font-size: 19px;
+    font-weight: 700;
 }
 
 .card p {
     font-size: 15px;
-    color: #666;
+    color: #6b5440;
 }
 
 /* ============ КНОПКА «НАЗАД» ============ */
 .back-link {
     display: inline-block;
     margin: 24px 0 4px;
-    color: #666;
+    color: #8b6b4a;
     text-decoration: none;
     font-size: 14px;
     transition: color 0.15s;
 }
 
 .back-link:hover {
-    color: #1a73e8;
+    color: #6b3f1d;
 }
 
 /* ============ ЗАГОЛОВКИ СТРАНИЦ ============ */
 main h1 {
-    font-size: 28px;
-    color: #1a2b4c;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #4a2c14;
     margin: 8px 0 8px;
+    letter-spacing: 0.01em;
 }
 
 .subtitle {
-    color: #666;
+    color: #6b5440;
     margin-bottom: 32px;
     font-size: 16px;
+    font-style: italic;
 }
 
 /* ============ ОГЛАВЛЕНИЕ (TOC) ============ */
 .toc {
-    background: #ffffff;
+    background: #fffaf0;
     border-radius: 12px;
     padding: 20px 24px;
     margin-bottom: 32px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-    border-left: 4px solid #1a73e8;
+    box-shadow: 0 2px 12px rgba(74, 50, 32, 0.08);
+    border-left: 4px solid #b98a5a;
 }
 
 .toc h2 {
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 16px;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #1a73e8;
+    letter-spacing: 0.08em;
+    color: #6b3f1d;
     margin-bottom: 12px;
 }
 
@@ -202,33 +218,34 @@ main h1 {
 }
 
 .toc a {
-    color: #2c3e50;
+    color: #4a3220;
     text-decoration: none;
     border-bottom: 1px dashed transparent;
     transition: all 0.15s;
 }
 
 .toc a:hover {
-    color: #1a73e8;
-    border-bottom-color: #1a73e8;
+    color: #8b5a2b;
+    border-bottom-color: #8b5a2b;
 }
 
 /* ============ ПРИМЕРЫ ОШИБОК ============ */
 .error-case {
-    background: #ffffff;
+    background: #fffaf0;
     border-radius: 12px;
     padding: 24px;
     margin-bottom: 32px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-    scroll-margin-top: 80px; /* чтобы якорь не прилипал к шапке */
+    box-shadow: 0 2px 12px rgba(74, 50, 32, 0.08);
+    scroll-margin-top: 80px;
 }
 
 .error-case h2 {
-    font-size: 20px;
-    color: #1a2b4c;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 21px;
+    color: #4a2c14;
     margin-bottom: 20px;
     padding-bottom: 12px;
-    border-bottom: 2px solid #f0f3f8;
+    border-bottom: 2px solid #ece0cb;
 }
 
 .example-block {
@@ -248,51 +265,53 @@ main h1 {
 }
 
 .example-block.bad {
-    background: #fdecea;
-    border-left: 4px solid #d93025;
+    background: #fbe7e4;
+    border-left: 4px solid #c0392b;
 }
 
 .example-block.bad .example-label {
-    color: #d93025;
+    color: #c0392b;
 }
 
 .example-block.good {
-    background: #e6f4ea;
-    border-left: 4px solid #1e8e3e;
+    background: #e6efe2;
+    border-left: 4px solid #4b7a3a;
 }
 
 .example-block.good .example-label {
-    color: #1e8e3e;
+    color: #4b7a3a;
 }
 
 .example-block.explanation {
-    background: #fff8e1;
-    border-left: 4px solid #f9ab00;
+    background: #fbf3d9;
+    border-left: 4px solid #d39e2c;
 }
 
 .example-block.explanation .example-label {
-    color: #b06000;
+    color: #9c6f10;
 }
 
 .example-img {
     max-width: 100%;
     border-radius: 6px;
     margin-top: 12px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #e2d4b8;
 }
 
 /* ============ ТЕСТЫ ============ */
 .quiz {
-    background: #ffffff;
+    background: #fffaf0;
     border-radius: 12px;
     padding: 24px;
     margin-bottom: 24px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 12px rgba(74, 50, 32, 0.08);
 }
 
 .quiz h3 {
+    font-family: 'Playfair Display', Georgia, serif;
     margin-bottom: 16px;
-    color: #1a2b4c;
+    color: #4a2c14;
+    font-size: 18px;
 }
 
 .quiz-option {
@@ -301,51 +320,55 @@ main h1 {
     text-align: left;
     padding: 12px 16px;
     margin-bottom: 8px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #e2d4b8;
     border-radius: 8px;
-    background: #fff;
+    background: #fffdf8;
     cursor: pointer;
+    font-family: 'Lora', Georgia, serif;
     font-size: 15px;
+    color: #4a3220;
     transition: all 0.2s;
 }
 
 .quiz-option:hover {
-    border-color: #1a73e8;
-    background: #f0f7ff;
+    border-color: #b98a5a;
+    background: #fbf3e3;
 }
 
 .quiz-option.correct {
-    border-color: #1e8e3e;
-    background: #e6f4ea;
+    border-color: #4b7a3a;
+    background: #e6efe2;
 }
 
 .quiz-option.wrong {
-    border-color: #d93025;
-    background: #fdecea;
+    border-color: #c0392b;
+    background: #fbe7e4;
 }
 
 /* ============ ТЗ ============ */
 .tz-section {
-    background: #ffffff;
+    background: #fffaf0;
     border-radius: 12px;
     padding: 24px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 12px rgba(74, 50, 32, 0.08);
     scroll-margin-top: 80px;
 }
 
 .tz-section h2 {
-    color: #1a73e8;
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #6b3f1d;
     margin-bottom: 12px;
-    font-size: 20px;
+    font-size: 21px;
     padding-bottom: 8px;
-    border-bottom: 2px solid #f0f3f8;
+    border-bottom: 2px solid #ece0cb;
 }
 
 .tz-section h3 {
-    color: #1a2b4c;
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #4a2c14;
     margin: 20px 0 10px;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 .tz-section p {
@@ -356,10 +379,10 @@ main h1 {
 .site-footer {
     text-align: center;
     padding: 32px 0;
-    color: #888;
+    color: #8b6b4a;
     font-size: 14px;
     margin-top: 48px;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #e2d4b8;
 }
 
 /* ============ АДАПТИВ ============ */
@@ -373,7 +396,7 @@ main h1 {
         justify-content: center;
     }
     .hero h1 {
-        font-size: 24px;
+        font-size: 26px;
     }
     main h1 {
         font-size: 24px;
