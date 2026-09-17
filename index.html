@@ -14,6 +14,7 @@
         <nav class="main-nav">
             <a href="index.html" class="active">Главная</a>
             <a href="tz.html">ТЗ</a>
+            <a href="examples.html">Примеры</a>
             <a href="errors.html">Частые ошибки</a>
             <a href="tests.html">Тесты</a>
         </nav>
@@ -22,19 +23,36 @@
 
 <main class="container">
 
+    <!-- ПОИСК ПО САЙТУ -->
+    <section class="search-box">
+        <label for="site-search" class="search-label">🔍 Поиск по сайту</label>
+        <input
+            type="text"
+            id="site-search"
+            class="search-input"
+            placeholder="Например: доставка, оплата, КГТ, абьюз, CC05…"
+            autocomplete="off"
+        >
+        <ul id="search-results" class="search-results"></ul>
+    </section>
+
     <section class="hero">
         <h1>Добро пожаловать в мануал проекта 10444!</h1>
-        <p>Здесь собраны все материалы для работы: техническое задание, примеры частых ошибок с пояснениями и тренировочные тесты.</p>
+        <p>Здесь собраны все материалы для работы: техническое задание, примеры разметки, частые ошибки с пояснениями и тренировочные тесты.</p>
     </section>
 
     <section class="cards">
         <a href="tz.html" class="card">
             <h3>📄 Техническое задание</h3>
-            <p>Актуальные правила и требования проекта.</p>
+            <p>Регламент разметки Delivery Abuse: поля, корнеры, формулы.</p>
+        </a>
+        <a href="examples.html" class="card">
+            <h3>📚 Примеры и контрпримеры</h3>
+            <p>Разборы из реальных чатов: как размечать в спорных случаях.</p>
         </a>
         <a href="errors.html" class="card">
             <h3>🤓 Частые ошибки</h3>
-            <p>Разбор типичных ошибок с примерами и пояснениями.</p>
+            <p>Типичные ошибки с примерами «до/после» и пояснениями.</p>
         </a>
         <a href="tests.html" class="card">
             <h3>🔺 Тренировочные тесты</h3>
@@ -50,5 +68,6 @@
     </div>
 </footer>
 
+<script src="js/script.js"></script>
 </body>
 </html>
