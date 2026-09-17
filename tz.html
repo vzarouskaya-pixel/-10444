@@ -10,7 +10,7 @@
 
 <header class="site-header">
     <div class="container">
-        <div class="logo">📘 Мануал асессора</div>
+        <a href="index.html" class="logo">📘 Мануал асессора</a>
         <nav class="main-nav">
             <a href="index.html">Главная</a>
             <a href="tz.html" class="active">ТЗ</a>
@@ -21,23 +21,37 @@
 </header>
 
 <main class="container">
-    <h1>Техническое задание</h1>
+
+    <a href="index.html" class="back-link">← Назад на главную</a>
+
+    <h1>📄 Техническое задание</h1>
     <p class="subtitle">Здесь будет актуальная версия ТЗ с разделами и пояснениями.</p>
 
-    <section class="tz-section">
+    <!-- ОГЛАВЛЕНИЕ -->
+    <nav class="toc">
+        <h2>Содержание</h2>
+        <ol>
+            <li><a href="#section-1">Общие правила</a></li>
+            <li><a href="#section-2">Типы заданий</a></li>
+            <li><a href="#section-3">Критерии оценки</a></li>
+        </ol>
+    </nav>
+
+    <section class="tz-section" id="section-1">
         <h2>1. Общие правила</h2>
         <p>...</p>
     </section>
 
-    <section class="tz-section">
+    <section class="tz-section" id="section-2">
         <h2>2. Типы заданий</h2>
         <p>...</p>
     </section>
 
-    <section class="tz-section">
+    <section class="tz-section" id="section-3">
         <h2>3. Критерии оценки</h2>
         <p>...</p>
     </section>
+
 </main>
 
 <footer class="site-footer">
