@@ -176,3 +176,187 @@ function initSearch() {
 }
 
 document.addEventListener('DOMContentLoaded', initSearch);
+/* ================================================================
+   ТЕСТЫ: интерактивная логика со счётчиком и разбором
+   ================================================================
+   Работает для tests.html. Активна только если на странице есть
+   элементы с классом .quiz и id="quiz-progress".
+   ================================================================ */
+
+const QUIZ_TOTAL = 10;
+
+/* Храним ответы пользователя по каждому вопросу */
+const quizState = {
+    answers: {}, // { вопросIndex: { chosenText, isCorrect, correctText, note } }
+    total: 0,
+    right: 0
+};
+
+function initQuiz() {
+    const progress = document.getElementById('quiz-progress');
+    if (!progress) return; // на этой странице тестов нет
+
+    // Обход всех вопросов
+    const quizzes = document.querySelectorAll('.quiz');
+
+    quizzes.forEach((quiz, index) => {
+        const buttons = quiz.querySelectorAll('.quiz-option');
+        const noteEl = quiz.querySelector('.quiz-review-note');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // если уже отвечено — ничего не делаем
+                if (quiz.dataset.answered === 'true') return;
+
+                const isCorrect = btn.dataset.correct === 'true';
+                const chosenText = btn.textContent.trim();
+
+                // найти правильный вариант
+                let correctText = '';
+                let note = '';
+                buttons.forEach(b => {
+                    if (b.dataset.correct === 'true') {
+                        correctText = b.textContent.trim();
+                    }
+                });
+                if (noteEl) note = noteEl.textContent.trim();
+
+                // подсветить всё
+                buttons.forEach(b => {
+                    b.disabled = true;
+                    if (b.dataset.correct === 'true') {
+                        b.classList.add('correct');
+                    }
+                });
+
+                if (isCorrect) {
+                    btn.classList.add('chosen-right');
+                    quizState.right++;
+                } else {
+                    btn.classList.add('chosen-wrong');
+                }
+
+                // запомнить ответ
+                quizState.answers[index] = {
+                    chosenText,
+                    isCorrect,
+                    correctText,
+                    note
+                };
+                quiz.dataset.answered = 'true';
+                quizState.total++;
+
+                updateProgress();
+            });
+        });
+    });
+
+    // Сброс
+    const resetBtn = document.getElementById('quiz-reset');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', resetQuiz);
+    }
+}
+
+function updateProgress() {
+    const counter = document.getElementById('quiz-counter');
+    if (counter) {
+        counter.textContent = quizState.right;
+    }
+
+    const totalEl = document.getElementById('quiz-answered');
+    if (totalEl) {
+        totalEl.textContent = quizState.total;
+    }
+
+    // Если ответили на все — показать финал
+    if (quizState.total === QUIZ_TOTAL) {
+        showFinalReview();
+    }
+}
+
+function showFinalReview() {
+    const container = document.getElementById('quiz-review');
+    if (!container) return;
+
+    let html = '';
+    html += '<div class="quiz-final">';
+    html += '<h2>🏁 Тест завершён</h2>';
+    html += '<p class="quiz-final-score">Правильно: <strong>' + quizState.right + ' из ' + QUIZ_TOTAL + '</strong></p>';
+
+    let verdict = '';
+    if (quizState.right === QUIZ_TOTAL) {
+        verdict = 'Идеально! Все ответы верны — вы готовы к разметке. 🎉';
+    } else if (quizState.right >= 8) {
+        verdict = 'Отличный результат. Перечитайте разбор ошибок ниже — и в путь.';
+    } else if (quizState.right >= 6) {
+        verdict = 'Хороший результат, но стоит перечитать ТЗ и примеры по темам, где были ошибки.';
+    } else {
+        verdict = 'Рекомендуем вернуться к ТЗ и примерам — материал стоит повторить.';
+    }
+    html += '<p class="quiz-final-verdict">' + verdict + '</p>';
+    html += '</div>';
+
+    html += '<h2 style="font-family: \'Playfair Display\', Georgia, serif; font-size: 22px; color: #4a2c14; margin: 24px 0 12px;">Разбор ответов</h2>';
+
+    // Пробегаем по всем вопросам по порядку
+    document.querySelectorAll('.quiz').forEach((quiz, index) => {
+        const titleEl = quiz.querySelector('h3');
+        const title = titleEl ? titleEl.textContent.trim() : ('Вопрос ' + (index + 1));
+        const ans = quizState.answers[index];
+
+        if (!ans) return;
+
+        html += '<div class="quiz-review">';
+        html += '<h3>' + title + '</h3>';
+        html += '<p class="quiz-review-row"><span class="quiz-review-label">Ваш ответ: </span>' +
+                (ans.isCorrect ? '<span class="quiz-review-right">' + escapeHtml(ans.chosenText) + ' ✓</span>' :
+                                 '<span class="quiz-review-wrong">' + escapeHtml(ans.chosenText) + ' ✗</span>') +
+                '</p>';
+
+        if (!ans.isCorrect) {
+            html += '<p class="quiz-review-row"><span class="quiz-review-label">Правильный ответ: </span>' +
+                    '<span class="quiz-review-right">' + escapeHtml(ans.correctText) + '</span></p>';
+        }
+
+        if (ans.note) {
+            html += '<div class="quiz-review-note">' + escapeHtml(ans.note) + '</div>';
+        }
+
+        html += '</div>';
+    });
+
+    container.innerHTML = html;
+    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function resetQuiz() {
+    // Сбросить состояние
+    quizState.answers = {};
+    quizState.total = 0;
+    quizState.right = 0;
+
+    // Обход вопросов — снять подсветку
+    document.querySelectorAll('.quiz').forEach(quiz => {
+        quiz.dataset.answered = 'false';
+        quiz.querySelectorAll('.quiz-option').forEach(btn => {
+            btn.disabled = false;
+            btn.classList.remove('correct', 'wrong', 'chosen-right', 'chosen-wrong');
+        });
+    });
+
+    // Очистить финальный блок
+    const review = document.getElementById('quiz-review');
+    if (review) review.innerHTML = '';
+
+    updateProgress();
+}
+
+/* Простая защита от XSS при выводе текста */
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+document.addEventListener('DOMContentLoaded', initQuiz);
