@@ -10,7 +10,7 @@
 
 <header class="site-header">
     <div class="container">
-        <div class="logo">📘 Мануал асессора</div>
+        <a href="index.html" class="logo">📘 Мануал асессора</a>
         <nav class="main-nav">
             <a href="index.html">Главная</a>
             <a href="tz.html">ТЗ</a>
@@ -22,11 +22,22 @@
 
 <main class="container">
 
-    <h1>Частые ошибки с примерами</h1>
+    <a href="index.html" class="back-link">← Назад на главную</a>
+
+    <h1>⚠️ Частые ошибки</h1>
     <p class="subtitle">Каждый пример содержит: что пошло не так, почему это ошибка и как правильно.</p>
 
+    <!-- ОГЛАВЛЕНИЕ -->
+    <nav class="toc">
+        <h2>Содержание</h2>
+        <ol>
+            <li><a href="#error-1">Ошибка №1: Неверный выбор объявления</a></li>
+            <li><a href="#error-2">Ошибка №2: U2U как объявление</a></li>
+        </ol>
+    </nav>
+
     <!-- ПРИМЕР 1 -->
-    <article class="error-case">
+    <article class="error-case" id="error-1">
         <h2>Ошибка №1: Неверный выбор объявления</h2>
 
         <div class="example-block bad">
@@ -48,7 +59,7 @@
     </article>
 
     <!-- ПРИМЕР 2 -->
-    <article class="error-case">
+    <article class="error-case" id="error-2">
         <h2>Ошибка №2: U2U как объявление</h2>
 
         <div class="example-block bad">
