@@ -630,3 +630,159 @@ main h1 {
 .accordion-body > .subsection-title:first-child {
     margin-top: 0;
 }
+/* ================================================================
+   ПОИСК ПО САЙТУ
+   ================================================================ */
+.search-box {
+    position: relative;
+    margin: 24px 0 8px;
+}
+
+.search-label {
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6b3f1d;
+    margin-bottom: 8px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 15px;
+    color: #4a3220;
+    background: #fffaf0;
+    border: 2px solid #e2d4b8;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.search-input::placeholder {
+    color: #a08a70;
+    font-style: italic;
+}
+
+.search-input:focus {
+    border-color: #b98a5a;
+    box-shadow: 0 0 0 3px rgba(185, 138, 90, 0.18);
+}
+
+.search-results {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    background: #fffaf0;
+    border: 1px solid #e2d4b8;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(74, 50, 32, 0.12);
+    list-style: none;
+    margin: 0;
+    padding: 6px 0;
+    z-index: 50;
+    max-height: 360px;
+    overflow-y: auto;
+}
+
+.search-results.visible {
+    display: block;
+}
+
+.search-results li {
+    margin: 0;
+}
+
+.search-results a {
+    display: block;
+    padding: 10px 16px;
+    color: #4a3220;
+    text-decoration: none;
+    font-size: 15px;
+    border-bottom: none;
+    transition: background 0.12s, color 0.12s;
+}
+
+.search-results a:hover {
+    background: #fbf3e3;
+    color: #6b3f1d;
+    border-bottom: none;
+}
+
+.search-results .search-empty {
+    padding: 12px 16px;
+    color: #a08a70;
+    font-style: italic;
+    font-size: 14px;
+}
+
+/* ================================================================
+   ДОПОЛНЕНИЯ ДЛЯ СТРАНИЦЫ ПРИМЕРОВ (examples.html)
+   ================================================================ */
+
+/* Подзаголовок внутри раздела примеров (напр. ДОСТАВКА_ВНЕШНЯЯ) */
+.example-subhead {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 17px;
+    color: #6b3f1d;
+    margin: 24px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #d9c8a8;
+}
+
+.accordion-body > .example-subhead:first-child {
+    margin-top: 0;
+}
+
+/* Блок-заметка со ссылкой (используется в конце tz.html) */
+.note-box {
+    background: #fbf3d9;
+    border-left: 4px solid #d39e2c;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 32px 0 16px;
+    font-size: 15px;
+}
+
+.note-box p {
+    margin: 0 0 6px;
+}
+
+.note-box p:last-child {
+    margin-bottom: 0;
+}
+
+.note-box a {
+    font-weight: 600;
+    color: #9c6f10;
+    text-decoration: none;
+    border-bottom: 1px dashed #d39e2c;
+}
+
+.note-box a:hover {
+    color: #6b3f1d;
+    border-bottom-style: solid;
+}
+
+/* ================================================================
+   ОБНОВЛЕНИЕ СЕТКИ КАРТОЧЕК НА ГЛАВНОЙ
+   ================================================================
+   При 4 карточках минимальная ширина 240px даёт 2 в ряд на десктопе,
+   иногда 4 — смотря по ширине. Немного уменьшим минимум, чтобы
+   уместить 4 в ряд на широких экранах.
+*/
+@media (min-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1100px) {
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
