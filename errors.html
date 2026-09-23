@@ -14,6 +14,7 @@
         <nav class="main-nav">
             <a href="index.html">Главная</a>
             <a href="tz.html">ТЗ</a>
+            <a href="examples.html">Примеры</a>
             <a href="errors.html" class="active">Частые ошибки</a>
             <a href="tests.html">Тесты</a>
         </nav>
@@ -27,51 +28,182 @@
     <h1>🤓 Частые ошибки</h1>
     <p class="subtitle">Каждый пример содержит: что пошло не так, почему это ошибка и как правильно.</p>
 
+    <section class="search-box">
+        <label for="site-search" class="search-label">🔍 Поиск по сайту</label>
+        <input type="text" id="site-search" class="search-input"
+               placeholder="Например: самовывоз, КГТ, два объявления…" autocomplete="off">
+        <ul id="search-results" class="search-results"></ul>
+    </section>
+
     <nav class="toc">
         <h2>Содержание</h2>
         <ol>
-            <li><a href="#error-1">Ошибка №1: Неверный выбор объявления</a></li>
-            <li><a href="#error-2">Ошибка №2: U2U как объявление</a></li>
+            <li><a href="#error-1">Ошибка №1: Личная встреча ≠ самовывоз</a></li>
+            <li><a href="#error-2">Ошибка №2: Самовывоз без ответа продавца</a></li>
+            <li><a href="#error-3">Ошибка №3: КГТ у стола, обсуждают картины</a></li>
+            <li><a href="#error-4">Ошибка №4: Самовывоз — инициатива покупателя</a></li>
+            <li><a href="#error-5">Ошибка №5: Один заказ из двух объявлений</a></li>
         </ol>
     </nav>
 
+    <!-- ============ ОШИБКА №1 ============ -->
     <article class="error-case" id="error-1">
-        <h2>Ошибка №1: Неверный выбор объявления</h2>
+        <h2>Ошибка №1: Личная встреча ≠ самовывоз</h2>
+        <p class="subtitle" style="margin-bottom: 16px;">Категория: <strong>Корнер-кейс</strong></p>
 
         <div class="example-block bad">
-            <div class="example-label">❌ Неправильно</div>
-            <p>Выбрано объявление, которое по контексту не входит в подтверждённую внеавитную покупку, хотя в диалоге встретился отдельный сигнал.</p>
-            <img src="images/error1-bad.png" alt="Пример неправильного выбора" class="example-img">
+            <div class="example-label">❌ Как разметили неверно</div>
+            <p>Асессоры поставили <strong>СС02 «Личная встреча»</strong> — посчитали, что раз покупатель приезжает к продавцу, то это личная встреча.</p>
+            <img src="images/err-1.png" alt="Диалог D01: Электродвигатель" class="example-img">
         </div>
 
         <div class="example-block explanation">
             <div class="example-label">💡 Пояснение</div>
-            <p>Отдельный сигнал в диалоге (например, упоминание товара) — это ещё не основание выбирать объявление. Нужно убедиться, что весь контекст соответствует подтверждённой покупке.</p>
+            <p>Здесь нет договорённости о встрече в каком-то удобном для покупателя месте. Всё явное предложение и инициатива приехать <strong>на адрес продавца</strong> — исходит от покупателя.</p>
+            <div class="attention-red">
+                <strong>Ставим СС03 «Самовывоз».</strong> Обязательно отмечаем <strong>и «Упомянутый», и «Реализованный»</strong> корнер-кейс.
+            </div>
         </div>
 
         <div class="example-block good">
             <div class="example-label">✅ Правильно</div>
-            <p>Объявление не выбрано, так как контекст не относится к подтверждённой внеавитной покупке. Сигнал использован только для понимания контекста.</p>
-            <img src="images/error1-good.png" alt="Пример правильного действия" class="example-img">
+            <p>Покупатель сам приезжает на адрес продавца, чтобы забрать товар. Это <strong>СС03 «Самовывоз»</strong>. Отмечаем его в обоих списках: «Упомянутые корнеры» + «Реализованные корнеры».</p>
         </div>
     </article>
 
+    <!-- ============ ОШИБКА №2 ============ -->
     <article class="error-case" id="error-2">
-        <h2>Ошибка №2: U2U как объявление</h2>
+        <h2>Ошибка №2: Самовывоз без ответа продавца</h2>
+        <p class="subtitle" style="margin-bottom: 16px;">Категория: <strong>Корнер-кейс</strong></p>
 
         <div class="example-block bad">
-            <div class="example-label">❌ Неправильно</div>
-            <p>Асессор выбрал U2U-сообщение как объявление, хотя это коммуникация между пользователями, а не само объявление.</p>
+            <div class="example-label">❌ Как разметили неверно</div>
+            <p>Асессоры отметили СС03 и в «Упомянутых», и в «Реализованных корнерах», хотя <strong>ответа от продавца нет</strong>.</p>
+            <img src="images/err-2.png" alt="Диалог D01: Видеокарта Asus" class="example-img">
         </div>
 
         <div class="example-block explanation">
             <div class="example-label">💡 Пояснение</div>
-            <p><strong>U2U (User-to-User)</strong> — это взаимодействие между пользователями. Его <strong>можно использовать как контекст</strong>, но <strong>нельзя выбирать как объявление</strong>.</p>
+            <p>Видим предложение от покупателя на самовывоз, но <strong>ответа от продавца нет</strong>. Значит, реализация сделки не подтверждена.</p>
+            <div class="attention-red">
+                <strong>Ставим СС03 только в «Упомянутые корнеры».</strong> В «Реализованных корнерах» — пусто.
+            </div>
         </div>
 
         <div class="example-block good">
             <div class="example-label">✅ Правильно</div>
-            <p>U2U-сообщение использовано только для понимания контекста. Объявление для выбора берётся из другого источника.</p>
+            <p>Покупатель только предложил самовывоз, продавец не ответил. Отмечаем <strong>СС03 в «Упомянутых корнерах»</strong>, «Реализованные корнеры» оставляем пустыми.</p>
+        </div>
+    </article>
+
+    <!-- ============ ОШИБКА №3 ============ -->
+    <article class="error-case" id="error-3">
+        <h2>Ошибка №3: КГТ у стола, обсуждают картины</h2>
+        <p class="subtitle" style="margin-bottom: 16px;">Категория: <strong>Корнер-кейс</strong></p>
+
+        <div class="example-block bad">
+            <div class="example-label">❌ Как разметили неверно</div>
+            <p>Асессоры увидели плашку КГТ = «Да» и отметили СС05, хотя по диалогу обсуждают совсем другой товар.</p>
+            <img src="images/err-3.png" alt="Объявление: Стол, КГТ да" class="example-img">
+            <img src="images/err-3-2.png" alt="Диалог D01: Стол — обсуждают картины" class="example-img" style="margin-top: 10px;">
+        </div>
+
+        <div class="example-block explanation">
+            <div class="example-label">💡 Пояснение</div>
+            <p>В шапке объявления — <strong>Стол</strong>, а в диалоге обсуждают <strong>картины</strong>. Это разные товары. Значит, данный кейс <strong>оценке не подлежит</strong>.</p>
+            <div class="attention-red">
+                <strong>Ставим все резолюции «Нет» и НЕ ставим СС05.</strong>
+            </div>
+        </div>
+
+        <div class="example-block good">
+            <div class="example-label">✅ Правильно</div>
+            <p>Все булевы поля = «Нет». Оба списка корнеров — пусты. Итог: ПОДТВЕРЖДЕННЫЙ АБЬЮЗ = «Нет».</p>
+        </div>
+    </article>
+
+    <!-- ============ ОШИБКА №4 ============ -->
+    <article class="error-case" id="error-4">
+        <h2>Ошибка №4: Самовывоз — инициатива покупателя</h2>
+        <p class="subtitle" style="margin-bottom: 16px;">Категория: <strong>Корнер-кейс</strong></p>
+
+        <div class="example-block bad">
+            <div class="example-label">❌ Как разметили неверно</div>
+            <p>Асессоры поставили СС02 «Личная встреча», хотя по контексту это самовывоз.</p>
+            <img src="images/err-4.png" alt="Диалог D01: Шуруп глухарь" class="example-img">
+        </div>
+
+        <div class="example-block explanation">
+            <div class="example-label">💡 Пояснение</div>
+            <p>Инициатива полностью исходит от покупателя — он сам приезжает на адрес продавца. Договорённости о встрече в удобном для покупателя месте нет.</p>
+            <div class="attention-red">
+                <strong>Ставим СС03 «Самовывоз»</strong> — в «Упомянутых» и (если подтверждена передача) в «Реализованных корнерах».
+            </div>
+        </div>
+
+        <div class="example-block good">
+            <div class="example-label">✅ Правильно</div>
+            <p>Это <strong>СС03 «Самовывоз»</strong>, а не СС02. Отмечаем в обоих списках, если в материалах есть подтверждение физической передачи.</p>
+        </div>
+    </article>    <!-- ============ ОШИБКА №5 ============ -->
+    <article class="error-case" id="error-5">
+        <h2>Ошибка №5: Один заказ из двух объявлений</h2>
+        <p class="subtitle" style="margin-bottom: 16px;">Категория: <strong>Раздел ТЗ «Когда в карточке чаты по разным объявлениям»</strong></p>
+
+        <div class="example-block bad">
+            <div class="example-label">❌ Как разметили неверно</div>
+            <p>Асессоры рассматривали два объявления как независимые покупки и не увидели, что это <strong>один заказ</strong>.</p>
+            <img src="images/err-5-1.png" alt="Диалог D01: Opel Vectra — часть 1" class="example-img">
+            <img src="images/err-5-2.png" alt="Диалог D01: Opel Vectra — часть 2" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-5-3.png" alt="Диалог D01: Opel Vectra — часть 3" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-5-4.png" alt="Диалог D01: Opel Vectra — часть 4" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-5-5.png" alt="Диалог D01: Opel Vectra — часть 5" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-5-6.png" alt="Диалог D01: Opel Vectra — часть 6" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-5-7.png" alt="Диалог D02: Защита маховика — часть 1" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-5-8.png" alt="Диалог D02: Защита маховика — часть 2" class="example-img" style="margin-top: 10px;">
+        </div>
+
+        <div class="example-block explanation">
+            <div class="example-label">💡 Пояснение</div>
+            <p>Здесь <strong>2 объявления</strong>, и покупка включает в себя два товара:</p>
+            <ul>
+                <li><strong>«Привод левый в сборе»</strong> — это первое объявление (D01, Opel Vectra A).</li>
+                <li><strong>«Защита маховика»</strong> — это второе объявление (D02, Opel vectra A).</li>
+            </ul>
+            <p>Эти два товара <strong>входят в одну покупку</strong>. Видим чётко:</p>
+            <ul>
+                <li><strong>ДОСТАВКА_НАПРЯМУЮ</strong> — стороны договорились использовать подключённую к Авито службу (СДЭК);</li>
+                <li><strong>РЕКВИЗИТЫ_ВНЕ_АВИТО</strong> — переданы реквизиты для оплаты;</li>
+                <li><strong>ОПЛАТА_ВНЕ_АВИТО</strong> — подтверждён состоявшийся платёж вне Авито по этой покупке.</li>
+            </ul>
+            <p>Реализованных корнер-кейсов нет ни в одном диалоге.</p>
+
+            <img src="images/err-5-note-1.png" alt="Интерфейс: блоки 1 и 2" class="example-img">
+            <img src="images/err-5-note-2.png" alt="Интерфейс: блок 3 — корнеры" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-5-note-3.png" alt="Интерфейс: блоки 4 и 5" class="example-img" style="margin-top: 10px;">
+
+            <div class="attention-red">
+                <strong>Значит, если в «1. Организация сделки вне Авито» есть хоть одно «Да», в «2. Реализация» — тоже есть хоть одно «Да», и нету Реализованных корнер-кейсов — делаем вывод, что «ПОДТВЕРЖДЕННЫЙ АБЬЮЗ» = «Да».</strong>
+            </div>
+
+            <p>Также видим по диалогам, что <strong>ГОТОВНОСТЬ_ПРОДАВЦА_ОТПРАВИТЬ_ВНЕ_АВИТО</strong> = «Да».</p>
+
+            <p>В конце отмечаем, по каким объявлениям произошёл увод. Так как в нашу покупку входят товары из <strong>обоих объявлений</strong>, значит <strong>отмечаем оба</strong>.</p>
+        </div>
+
+        <div class="example-block good">
+            <div class="example-label">✅ Правильно</div>
+            <p>По контексту это <strong>один заказ</strong> из двух товаров, а договорённость и оплата относятся к обоим.</p>
+            <ul>
+                <li><strong>ДОСТАВКА_НАПРЯМУЮ</strong> = «Да»</li>
+                <li><strong>РЕКВИЗИТЫ_ВНЕ_АВИТО</strong> = «Да»</li>
+                <li><strong>ОПЛАТА_ВНЕ_АВИТО</strong> = «Да»</li>
+                <li><strong>ОТПРАВКА_ВНЕ_АВИТО</strong> = «Нет»</li>
+                <li><strong>ГОТОВНОСТЬ_ПРОДАВЦА_ОТПРАВИТЬ_ВНЕ_АВИТО</strong> = «Да»</li>
+                <li>Оба списка корнеров — пусты.</li>
+                <li><strong>ПОДТВЕРЖДЕННЫЙ АБЬЮЗ</strong> = «Да»</li>
+                <li>В списке объявлений с уводом выбираем <strong>D01 и D02</strong>.</li>
+            </ul>
         </div>
     </article>
 
@@ -83,5 +215,6 @@
     </div>
 </footer>
 
+<script src="js/script.js"></script>
 </body>
 </html>
