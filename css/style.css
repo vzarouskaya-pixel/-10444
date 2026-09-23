@@ -1319,3 +1319,19 @@ html {
         max-width: 1300px;
     }
 }
+/* ================================================================
+   КРАСНАЯ ПЛАШКА ВНИМАНИЯ (для errors.html и tz.html)
+   ================================================================ */
+.attention-red {
+    background: #fbe7e4;
+    border-left: 4px solid #c0392b;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    color: #4a3220;
+    font-weight: 500;
+}
+
+.attention-red strong {
+    color: #c0392b;
+}
