@@ -127,12 +127,15 @@ function initSearch() {
     const preparedIndex = searchIndex.map(item => ({
         ...item,
         _titleNorm: makeSearchString(item.title),
-        _keywordsNorm: makeSearchString(item.keywords)
+        _keywordsNorm: makeSearchString(item.keywords),
+        _titleRaw: item.title.toLowerCase(),
+        _keywordsRaw: item.keywords.toLowerCase()
     }));
 
     input.addEventListener('input', () => {
         const raw = input.value.trim();
         const q = makeSearchString(raw);
+        const qRaw = raw.toLowerCase().trim().replace(/\s+/g, ' ');
 
         results.innerHTML = '';
 
@@ -141,8 +144,14 @@ function initSearch() {
             return;
         }
 
+        // Двойной поиск:
+        // 1) по нормализованной строке (CC08 → СС08)
+        // 2) по исходной строке «как есть» (КГТ → КГТ)
         const found = preparedIndex.filter(item =>
-            item._titleNorm.includes(q) || item._keywordsNorm.includes(q)
+            item._titleNorm.includes(q) ||
+            item._keywordsNorm.includes(q) ||
+            item._titleRaw.includes(qRaw) ||
+            item._keywordsRaw.includes(qRaw)
         ).slice(0, 10);
 
         if (found.length === 0) {
