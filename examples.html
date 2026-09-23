@@ -289,7 +289,9 @@
         </div>
 
     </div>
-</details><!-- ============ 5.3. КОРНЕРЫ И ИТОГОВОЕ РЕШЕНИЕ ============ -->
+</details>
+
+<!-- ============ 5.3. КОРНЕРЫ И ИТОГОВОЕ РЕШЕНИЕ ============ -->
 <details class="accordion" id="ex-5-3" open>
     <summary>5.3. Корнеры и итоговое решение</summary>
     <div class="accordion-body">
@@ -487,7 +489,9 @@
         </div>
 
     </div>
-</details><!-- ============ 5.5. ПРИМЕРЫ ПО ИЗОБРАЖЕНИЯМ ============ -->
+</details>
+
+<!-- ============ 5.5. ПРИМЕРЫ ПО ИЗОБРАЖЕНИЯМ ============ -->
 <details class="accordion" id="ex-5-5" open>
     <summary>5.5. Примеры по изображениям</summary>
     <div class="accordion-body">
@@ -507,6 +511,12 @@
             <div class="chat-quote">
                 <p><span class="who">Продавец:</span> «Qr действует 20 минут»</p>
             </div>
+            <div class="ui-screenshot">
+                <a href="images/ex-qr-code.png" target="_blank">
+                    <img src="images/ex-qr-code.png" alt="QR-код для оплаты">
+                </a>
+                <div class="ui-screenshot-caption">QR-код для оплаты на изображении</div>
+            </div>
             <div class="how-to">
                 РЕКВИЗИТЫ_ВНЕ_АВИТО = «Да»: продавец передает реквизиты для оплаты вне Авито в виде изображения, а не текстом.
             </div>
@@ -517,6 +527,12 @@
         <div class="example-case control">
             <h4>Квитанция со скрытым статусом платежа <span class="case-tag control">Контрпример</span></h4>
             <p>Покупатель отправляет квитанцию перевода после получения реквизитов.</p>
+            <div class="ui-screenshot">
+                <a href="images/ex-receipt-hidden.png" target="_blank">
+                    <img src="images/ex-receipt-hidden.png" alt="Квитанция со скрытым статусом">
+                </a>
+                <div class="ui-screenshot-caption">Квитанция со скрытым статусом платежа</div>
+            </div>
             <div class="how-to">
                 На этом скриншоте значение статуса скрыто. По одному показанному скриншоту нельзя подтвердить успешность платежа. Для ОПЛАТА_ВНЕ_АВИТО = «Да» нужны читаемое подтверждение успешной операции либо сообщение покупателя и/или подтверждение продавца о состоявшемся платеже. Также должно быть понятно, что платеж проведен вне Авито и относится к этой покупке. Если нужных подтверждений нет, ставьте «Нет».
             </div>
@@ -526,6 +542,12 @@
             <h4>Скриншот оплаты через Авито <span class="case-tag control">Контрпример</span></h4>
             <div class="chat-quote">
                 <p><span class="who">Покупатель:</span> «Вот оплата»</p>
+            </div>
+            <div class="ui-screenshot">
+                <a href="images/ex-avito-payment.png" target="_blank">
+                    <img src="images/ex-avito-payment.png" alt="Скриншот оплаты через Авито">
+                </a>
+                <div class="ui-screenshot-caption">Скриншот оплаты через Avito Dostavka</div>
             </div>
             <div class="how-to">
                 Если платеж через Avito Dostavka, для него ОПЛАТА_ВНЕ_АВИТО = «Нет»: сам по себе банковский скриншот еще не означает обход Авито; важно, к какой именно схеме относится платеж. Если из изображения видно, что это Avito Dostavka, такой скриншот не подтверждает оплату вне Авито.
@@ -538,6 +560,12 @@
             <h4>Оформление еще не подтверждает отправку <span class="case-tag control">Контрпример</span></h4>
             <div class="chat-quote">
                 <p><span class="who">Продавец:</span> «[трек-номер] трек номер для отслеживания покупки»</p>
+            </div>
+            <div class="ui-screenshot">
+                <a href="images/ex-track-formatted.png" target="_blank">
+                    <img src="images/ex-track-formatted.png" alt="Скриншот со статусом Оформлено">
+                </a>
+                <div class="ui-screenshot-caption">Скриншот доставки — активен только статус «Оформлено»</div>
             </div>
             <div class="how-to">
                 Если других подтверждений физической отправки вне Авито нет, ОТПРАВКА_ВНЕ_АВИТО = «Нет»: на скриншоте активен только статус «Оформлено». Само оформление и переданный трек-номер еще не подтверждают физическую отправку. Для ОТПРАВКА_ВНЕ_АВИТО = «Да» нужно другое ясное подтверждение приема, передачи, движения или получения товара вне Авито.
