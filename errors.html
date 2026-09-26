@@ -54,20 +54,25 @@
         <div class="example-block bad">
             <div class="example-label">❌ Как разметили неверно</div>
             <p>Асессоры поставили <strong>СС02 «Личная встреча»</strong> — посчитали, что раз покупатель приезжает к продавцу, то это личная встреча.</p>
-            <img src="images/err-1.png" alt="Диалог D01: Электродвигатель" class="example-img">
+            <img src="images/err-1.webp" alt="Диалог D01: Электродвигатель" class="example-img">
         </div>
 
         <div class="example-block explanation">
             <div class="example-label">💡 Пояснение</div>
+            <p>На скриншоте покупатель <strong>только договаривается приехать</strong>. Подтверждения оплаты или получения товара нет. По пункту 2.3 <strong>одной договорённости недостаточно</strong>.</p>
             <p>Здесь нет договорённости о встрече в каком-то удобном для покупателя месте. Всё явное предложение и инициатива приехать <strong>на адрес продавца</strong> — исходит от покупателя.</p>
             <div class="attention-red">
-                <strong>Ставим СС03 «Самовывоз».</strong> Обязательно отмечаем <strong>и «Упомянутый», и «Реализованный»</strong> корнер-кейс.
+                <strong>Ставим СС03 «Самовывоз» только в «Упомянутые корнеры».</strong> «Реализованные корнеры» оставляем пустыми — если к задаче не прилагалась транскрипция звонка, по которой понятно, что пользователи всё-таки встретились.
             </div>
         </div>
 
         <div class="example-block good">
             <div class="example-label">✅ Правильно</div>
-            <p>Покупатель сам приезжает на адрес продавца, чтобы забрать товар. Это <strong>СС03 «Самовывоз»</strong>. Отмечаем его в обоих списках: «Упомянутые корнеры» + «Реализованные корнеры».</p>
+            <p>Покупатель сам приезжает на адрес продавца, чтобы забрать товар. Это <strong>СС03 «Самовывоз»</strong>.</p>
+            <ul>
+                <li><strong>«Упомянутые корнеры»</strong> → СС03.</li>
+                <li><strong>«Реализованные корнеры»</strong> → пусто (если нет транскрипции звонка с подтверждением встречи).</li>
+            </ul>
         </div>
     </article>
 
@@ -79,7 +84,7 @@
         <div class="example-block bad">
             <div class="example-label">❌ Как разметили неверно</div>
             <p>Асессоры отметили СС03 и в «Упомянутых», и в «Реализованных корнерах», хотя <strong>ответа от продавца нет</strong>.</p>
-            <img src="images/err-2.png" alt="Диалог D01: Видеокарта Asus" class="example-img">
+            <img src="images/err-2.webp" alt="Диалог D01: Видеокарта Asus" class="example-img">
         </div>
 
         <div class="example-block explanation">
@@ -104,8 +109,8 @@
         <div class="example-block bad">
             <div class="example-label">❌ Как разметили неверно</div>
             <p>Асессоры увидели плашку КГТ = «Да» и отметили СС05, хотя по диалогу обсуждают совсем другой товар.</p>
-            <img src="images/err-3.png" alt="Объявление: Стол, КГТ да" class="example-img">
-            <img src="images/err-3-2.png" alt="Диалог D01: Стол — обсуждают картины" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-3.webp" alt="Объявление: Стол, КГТ да" class="example-img">
+            <img src="images/err-3-2.webp" alt="Диалог D01: Стол — обсуждают картины" class="example-img" style="margin-top: 10px;">
         </div>
 
         <div class="example-block explanation">
@@ -130,7 +135,7 @@
         <div class="example-block bad">
             <div class="example-label">❌ Как разметили неверно</div>
             <p>Асессоры поставили СС02 «Личная встреча», хотя по контексту это самовывоз.</p>
-            <img src="images/err-4.png" alt="Диалог D01: Шуруп глухарь" class="example-img">
+            <img src="images/err-4.webp" alt="Диалог D01: Шуруп глухарь" class="example-img">
         </div>
 
         <div class="example-block explanation">
@@ -152,48 +157,46 @@
 
         <div class="example-block bad">
             <div class="example-label">❌ Как разметили неверно</div>
-            <p>Асессоры рассматривали два объявления как независимые покупки и не увидели, что это <strong>один заказ</strong>.</p>
-            <img src="images/err-5-1.png" alt="Диалог D01: Opel Vectra — часть 1" class="example-img">
-            <img src="images/err-5-2.png" alt="Диалог D01: Opel Vectra — часть 2" class="example-img" style="margin-top: 10px;">
-            <img src="images/err-5-3.png" alt="Диалог D01: Opel Vectra — часть 3" class="example-img" style="margin-top: 10px;">
-            <img src="images/err-5-4.png" alt="Диалог D01: Opel Vectra — часть 4" class="example-img" style="margin-top: 10px;">
-            <img src="images/err-5-5.png" alt="Диалог D01: Opel Vectra — часть 5" class="example-img" style="margin-top: 10px;">
-            <img src="images/err-5-6.png" alt="Диалог D01: Opel Vectra — часть 6" class="example-img" style="margin-top: 10px;">
-            <img src="images/err-5-7.png" alt="Диалог D02: Защита маховика — часть 1" class="example-img" style="margin-top: 10px;">
-            <img src="images/err-5-8.png" alt="Диалог D02: Защита маховика — часть 2" class="example-img" style="margin-top: 10px;">
+            <p>Асессоры решили, что покупка включает <strong>два товара из двух объявлений</strong>, и выбрали оба объявления для увода. Но переписка этого не подтверждает.</p>
+            <img src="images/err-5-1.webp" alt="Диалог D01: Opel Vectra — часть 1" class="example-img">
+            <img src="images/err-5-2.webp" alt="Диалог D01: Opel Vectra — часть 2" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-5-3.webp" alt="Диалог D01: Opel Vectra — часть 3" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-5-4.webp" alt="Диалог D01: Opel Vectra — часть 4" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-5-5.webp" alt="Диалог D01: Opel Vectra — часть 5" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-5-6.webp" alt="Диалог D01: Opel Vectra — часть 6" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-5-7.webp" alt="Диалог D02: Защита маховика — часть 1" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-5-8.webp" alt="Диалог D02: Защита маховика — часть 2" class="example-img" style="margin-top: 10px;">
         </div>
 
         <div class="example-block explanation">
             <div class="example-label">💡 Пояснение</div>
-            <p>Здесь <strong>2 объявления</strong>, и покупка включает в себя два товара:</p>
-            <ul>
-                <li><strong>«Привод левый в сборе»</strong> — это первое объявление (D01, Opel Vectra A).</li>
-                <li><strong>«Защита маховика»</strong> — это второе объявление (D02, Opel vectra A).</li>
-            </ul>
-            <p>Эти два товара <strong>входят в одну покупку</strong>. Видим чётко:</p>
-            <ul>
-                <li><strong>ДОСТАВКА_НАПРЯМУЮ</strong> — стороны договорились использовать подключённую к Авито службу (СДЭК);</li>
-                <li><strong>РЕКВИЗИТЫ_ВНЕ_АВИТО</strong> — переданы реквизиты для оплаты;</li>
-                <li><strong>ОПЛАТА_ВНЕ_АВИТО</strong> — подтверждён состоявшийся платёж вне Авито по этой покупке.</li>
-            </ul>
-            <p>Реализованных корнер-кейсов нет ни в одном диалоге.</p>
+            <p><strong>Покупка двух товаров не подтверждена показанной перепиской.</strong> Продавец просто создал новое объявление для защиты маховика, и увод произошёл по нему.</p>
+            <p>Подтверждённые 1100 рублей соответствуют защите за 500 рублей и доставке примерно за 600 рублей.</p>
 
-            <img src="images/err-5-note-1.png" alt="Интерфейс: блоки 1 и 2" class="example-img">
-            <img src="images/err-5-note-2.png" alt="Интерфейс: блок 3 — корнеры" class="example-img" style="margin-top: 10px;">
-            <img src="images/err-5-note-3.png" alt="Интерфейс: блоки 4 и 5" class="example-img" style="margin-top: 10px;">
+            <p>По второму объявлению чётко видим:</p>
+            <ul>
+                <li><strong>ДОСТАВКА_НАПРЯМУЮ</strong> — стороны договорились использовать подключённую к Авито службу <strong>Почта</strong>;</li>
+                <li><strong>РЕКВИЗИТЫ_ВНЕ_АВИТО</strong> — переданы реквизиты для оплаты;</li>
+                <li><strong>ОПЛАТА_ВНЕ_АВИТО</strong> — подтверждён состоявшийся платёж вне Авито.</li>
+            </ul>
+            <p>Реализованных корнер-кейсов нет.</p>
+
+            <img src="images/err-5-note-1.webp" alt="Интерфейс: блоки 1 и 2" class="example-img">
+            <img src="images/err-5-note-2.webp" alt="Интерфейс: блок 3 — корнеры" class="example-img" style="margin-top: 10px;">
+            <img src="images/err-5-note-3.webp" alt="Интерфейс: блоки 4 и 5" class="example-img" style="margin-top: 10px;">
 
             <div class="attention-red">
-                <strong>Значит, если в «1. Организация сделки вне Авито» есть хоть одно «Да», в «2. Реализация» — тоже есть хоть одно «Да», и нету Реализованных корнер-кейсов — делаем вывод, что «ПОДТВЕРЖДЕННЫЙ АБЬЮЗ» = «Да».</strong>
+                <strong>Значит, если в «1. Организация сделки вне Авито» есть хоть одно «Да», в «2. Реализация» — тоже есть хоть одно «Да», и нет Реализованных корнер-кейсов — делаем вывод, что «ПОДТВЕРЖДЕННЫЙ АБЬЮЗ» = «Да».</strong>
             </div>
 
             <p>Также видим по диалогам, что <strong>ГОТОВНОСТЬ_ПРОДАВЦА_ОТПРАВИТЬ_ВНЕ_АВИТО</strong> = «Да».</p>
 
-            <p>В конце отмечаем, по каким объявлениям произошёл увод. Так как в нашу покупку входят товары из <strong>обоих объявлений</strong>, значит <strong>отмечаем оба</strong>.</p>
+            <p>В конце отмечаем, по каким объявлениям произошёл увод. Так как увод произошёл <strong>только по второму объявлению</strong>, отмечаем только его.</p>
         </div>
 
         <div class="example-block good">
             <div class="example-label">✅ Правильно</div>
-            <p>По контексту это <strong>один заказ</strong> из двух товаров, а договорённость и оплата относятся к обоим.</p>
+            <p>Увод произошёл по <strong>второму объявлению</strong> (защита маховика).</p>
             <ul>
                 <li><strong>ДОСТАВКА_НАПРЯМУЮ</strong> = «Да»</li>
                 <li><strong>РЕКВИЗИТЫ_ВНЕ_АВИТО</strong> = «Да»</li>
@@ -202,7 +205,7 @@
                 <li><strong>ГОТОВНОСТЬ_ПРОДАВЦА_ОТПРАВИТЬ_ВНЕ_АВИТО</strong> = «Да»</li>
                 <li>Оба списка корнеров — пусты.</li>
                 <li><strong>ПОДТВЕРЖДЕННЫЙ АБЬЮЗ</strong> = «Да»</li>
-                <li>В списке объявлений с уводом выбираем <strong>D01 и D02</strong>.</li>
+                <li>В списке объявлений с уводом выбираем <strong>только D02</strong>.</li>
             </ul>
         </div>
     </article>
